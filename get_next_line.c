@@ -12,18 +12,18 @@
 
 #include "get_next_line.h"
 //locate the line that should be read in our fd
-char	*ft_read_line(char *buffer, int fd, int size_l)
+char	*ft_read_line(char *buffer, int fd)
 {
 	char	*temp;
 	int		byte_count;//number of bytes read
 
 	byte_count = 1;
-	temp = (char *)malloc(sizeof(char) * (size_l + 1));
+	temp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (temp == NULL)
 		return (NULL);
 	while (!(ft_strchr(buffer, '\n')) && byte_count != 0)//while looking for a \n,
 	{//check the bytes read, if no error has occured, save the amount of bytes read
-		byte_count = read(fd, temp, size_l);//reading from fd into temp up to BUFFER_SIZE
+		byte_count = read(fd, temp, BUFFER_SIZE);//reading from fd into temp up to BUFFER_SIZE
 		if (byte_count == -1)
 		{
 			free(temp);
@@ -98,12 +98,10 @@ char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*line;
-	int			size_l;
 
-	size_l = BUFFER_SIZE;
-	if (fd < 0 || size_l <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = ft_read_line(buffer, fd, size_l);//read our line for the \n or any error
+	buffer = ft_read_line(buffer, fd, BUFFER_SIZE);//read our line for the \n or any error
 	if (buffer == NULL)
 		return (NULL);
 	line = ft_ret_read_line(buffer);//return the line that was read
