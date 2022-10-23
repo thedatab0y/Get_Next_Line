@@ -19,16 +19,12 @@
 # include <stdio.h>
 # include <stddef.h>
 
-# ifndef BUFFER_SIZE //checks if our buffer is defined
-#  define BUFFER_SIZE 42//if not, define it as 42
-# endif
-
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *temp, char *buffer);
 char	*ft_strchr(char *str, int c);
 size_t	ft_strlen(char *str);
 char	*ft_ret_read_line(char *buffer);
 char	*ft_update_line(char *buffer);
-char	*ft_read_line(char *buffer, int fd, int size_l);
+char	*ft_read_line(char *buffer, int fd);
 
 #endif
