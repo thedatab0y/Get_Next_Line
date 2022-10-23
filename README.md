@@ -1,3 +1,3 @@
-# gnl
+# get_next_line
 Passed!
-<img width="364" alt="Screen Shot 2022-10-23 at 4 47 20 PM" src="https://user-images.githubusercontent.com/114252614/197398797-1dd50f5d-73f2-49dc-97e6-ec83192fc481.png">
+<img width="252" alt="Screen Shot 2022-10-23 at 4 48 29 PM" src="https://user-images.githubusercontent.com/114252614/197398846-c0b0559d-b37e-4de8-aff6-96a7aa8bce00.png">
