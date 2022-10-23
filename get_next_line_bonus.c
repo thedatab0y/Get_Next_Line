@@ -12,18 +12,18 @@
 
 #include "get_next_line_bonus.h"
 
-char	*ft_read_line(char *buffer, int fd, int size_l)
+char	*ft_read_line(char *buffer, int fd)
 {
 	char	*temp;
 	int		byte_count;
 
 	byte_count = 1;
-	temp = (char *)malloc(sizeof(char) * (size_l + 1));
+	temp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (temp == NULL)
 		return (NULL);
 	while (!(ft_strchr(buffer, '\n')) && byte_count != 0)
 	{
-		byte_count = read(fd, temp, size_l);
+		byte_count = read(fd, temp, BUFFER_SIZE);
 		if (byte_count == -1)
 		{
 			free(temp);
@@ -98,12 +98,10 @@ char	*get_next_line(int fd)
 { //make the static variable an array of strings, each corresponding to one file descriptor.
 	static char	*buffer[4096];
 	char		*line;
-	int			size_l;
 
-	size_l = BUFFER_SIZE;
-	if (fd < 0 || size_l <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer[fd] = ft_read_line(buffer[fd], fd, size_l);
+	buffer[fd] = ft_read_line(buffer[fd], fd, BUFFER_SIZE);
 	if (buffer[fd] == NULL)
 		return (NULL);
 	line = ft_ret_read_line(buffer[fd]);
